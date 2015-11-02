@@ -124,7 +124,7 @@
     var isAnimate = document.getElementById('is_animate');
     
     // Load any previously saved configuration, if available
-    isDate.checked = (localStorage['IS_DATE'] ? localStorage['IS_DATE']==1 : true);
+    isDate.checked = localStorage['IS_DATE']==1 ? true : false);
     isSecond.checked = !(localStorage['IS_SECOND'] && localStorage['IS_SECOND']===0);
     isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']===0);
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']===0);
