@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Slate Example Configuration</title>
+  <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+  <script src='js/slate.min.js'></script>
+  <style>
+  .title {
+    padding: 15px 10px;
+    text-transform: uppercase;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #888888;
+    text-align: center;
+  }
+  </style>
+  </head>
+
+  <body>
+  
+    <h1 class='title'>Black Hole &#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h1>
+
+    <div class='item-container'>
+      <div class='item-container-header'>&#x8868;&#x76D8;&#x6837;&#x5F0F;</div>
+      <div class='item-container-content'>
+        <label class='item'>
+          &#x663E;&#x793A;&#x65E5;&#x671F;
+          <input id='is_date' type='checkbox' class='item-toggle'>
+        </label>
+        <label class='item'>
+          &#x663E;&#x793A;&#x79D2;&#x9488;
+          <input id='is_second' type='checkbox' class='item-toggle'>
+        </label>
+        <label class='item'>
+          &#x80CC;&#x666F;&#x53D8;&#x5316;
+          <input id='is_animate' type='checkbox' class='item-toggle'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        &#x9009;&#x62E9;&#x8868;&#x76D8;&#x6837;&#x5F0F;&#xFF0C;&#x82E5;&#x9009;&#x62E9;&#x80CC;&#x666F;&#x53D8;&#x5316;&#xFF0C;&#x80CC;&#x666F;&#x5C06;&#x968F;&#x79D2;&#x9488;&#x6216;&#x5206;&#x9488;&#x79FB;&#x52A8;&#x800C;&#x53D8;&#x8272;&#x3002;
+      </div>
+    </div>    
+
+    <div class='item-container'>
+      <div class='item-container-header'>&#x632F;&#x52A8;&#x529F;&#x80FD;</div>
+      <div class='item-container-content'>
+        <label class='item'>
+          &#x6574;&#x70B9;&#x632F;&#x52A8;
+          <input id='is_hourly_vibr' type='checkbox' class='item-toggle'>
+        </label>
+        <label class='item'>
+          &#x65AD;&#x8FDE;&#x632F;&#x52A8;
+          <input id='is_disconnect_vibr' type='checkbox' class='item-toggle'>
+        </label>
+      </div>
+      <div class='item-container-footer'>
+        &#x9009;&#x62E9;&#x57FA;&#x672C;&#x7684;&#x632F;&#x52A8;&#x529F;&#x80FD;&#x3002;
+      </div>
+    </div>
+   
+    <div class='item-container'>
+      <div class='button-container'>
+        <input id='submit_button' type='button' class='item-button' value='&#x786E;&#x5B9A;'>
+      </div>
+    </div>
+    
+  </body>
+  
+  
+  <script>
+  function getConfigData() {
+    var isDate = document.getElementById('is_date');
+    var isSecond = document.getElementById('is_second');
+    var isHourlyVibr = document.getElementById('is_hourly_vibr');
+    var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
+    var isAnimate = document.getElementById('is_animate');
+ 
+    var options = {
+      'IS_DATE': (isDate.checked ? 1 : 0),
+      'IS_SECOND': (isSecond.checked ? 1 : 0),
+      'IS_HOURLY_VIBR': (isHourlyVibr.checked ? 1 : 0),
+      'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
+      'IS_ANIMATE': (isAnimate.checked ? 1 : 0)
+    };
+
+    // Save for next launch
+    localStorage['IS_DATE'] = options['IS_DATE'];
+    localStorage['IS_SECOND'] = options['IS_SECOND'];
+    localStorage['IS_HOURLY_VIBR'] = options['IS_HOURLY_VIBR'];
+    localStorage['IS_DISCONNECT_VIBR'] = options['IS_DISCONNECT_VIBR'];
+    localStorage['IS_ANIMATE'] = options['IS_ANIMATE'];
+
+    console.log('Got options: ' + JSON.stringify(options));
+    return options;
+  }
+
+  function getQueryParam(variable, defaultValue) {
+    var query = location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (pair[0] === variable) {
+        return decodeURIComponent(pair[1]);
+      }
+    }
+    return defaultValue || false;
+  }
+ 
+  var submitButton = document.getElementById('submit_button');
+  submitButton.addEventListener('click', function() {
+    console.log('Submit');
+
+    // Set the return URL depending on the runtime environment
+    var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
+  });
+
+  (function() {
+    var isDate = document.getElementById('is_date');
+    var isSecond = document.getElementById('is_second');
+    var isHourlyVibr = document.getElementById('is_hourly_vibr');
+    var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
+    var isAnimate = document.getElementById('is_animate');
+    
+    // Load any previously saved configuration, if available
+    isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
+    isSecond.checked = !(localStorage['IS_SECOND'] && localStorage['IS_SECOND']==0);
+    isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
+    isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
+    isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
+      		      
+  })();
+  
+  </script>
+</html>
