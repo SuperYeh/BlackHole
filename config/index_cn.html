@@ -36,10 +36,13 @@
           &#x80CC;&#x666F;&#x53D8;&#x5316;
           <input id='is_animate' type='checkbox' class='item-toggle'>
         </label>
+        <label class='item'>
+          &#x7529;&#x5C5B;&#x53D8;&#x5316;
+          <input id='is_shake_animate' type='checkbox' class='item-toggle'>
+        </label>
       </div>
       <div class='item-container-footer'>
         &#x9009;&#x62E9;&#x8868;&#x76D8;&#x6837;&#x5F0F;&#xFF0C;&#x9009;&#x62E9;&#x80CC;&#x666F;&#x53D8;&#x5316;&#x5C06;&#x6BD4;&#x8F83;&#x8017;&#x7535;&#x3002;
-        &#x5373;&#x4F7F;&#x5173;&#x95ED;&#x80CC;&#x666F;&#x53D8;&#x5316;&#xFF0C;&#x6643;&#x52A8;&#x4EAE;&#x5C5B;&#x4ECD;&#x53EF;&#x67E5;&#x770B;5&#x79D2;&#x80CC;&#x666F;&#x53D8;&#x5316;&#x3002;
       </div>
     </div>    
 
@@ -76,6 +79,7 @@
     var isHourlyVibr = document.getElementById('is_hourly_vibr');
     var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
     var isAnimate = document.getElementById('is_animate');
+    var isShakeAnimate = document.getElementById('is_shake_animate');
  
     var options = {
       'IS_DATE': (isDate.checked ? 1 : 0),
@@ -83,6 +87,7 @@
       'IS_HOURLY_VIBR': (isHourlyVibr.checked ? 1 : 0),
       'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
       'IS_ANIMATE': (isAnimate.checked ? 1 : 0)
+      'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0)
     };
 
     // Save for next launch
@@ -91,6 +96,7 @@
     localStorage['IS_HOURLY_VIBR'] = options['IS_HOURLY_VIBR'];
     localStorage['IS_DISCONNECT_VIBR'] = options['IS_DISCONNECT_VIBR'];
     localStorage['IS_ANIMATE'] = options['IS_ANIMATE'];
+    localStorage['IS_SHAKE_ANIMATE'] = options['IS_SHAKE_ANIMATE'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -123,6 +129,7 @@
     var isHourlyVibr = document.getElementById('is_hourly_vibr');
     var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
     var isAnimate = document.getElementById('is_animate');
+    var isShakeAnimate = document.getElementById('is_shake_animate');
     
     // Load any previously saved configuration, if available
     isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
@@ -130,6 +137,7 @@
     isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
+    isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
       		      
   })();
   
