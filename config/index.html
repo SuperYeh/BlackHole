@@ -33,6 +33,10 @@
           <input id='is_second' type='checkbox' class='item-toggle'>
         </label>
         <label class='item'>
+          Hand Arm
+          <input id='is_hand_tail' type='checkbox' class='item-toggle'>
+        </label>
+        <label class='item'>
           Background Animation
           <input id='is_animate' type='checkbox' class='item-toggle'>
         </label>
@@ -80,6 +84,7 @@
     var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
+    var isHandTail = document.getElementById('is_hand_tail');
  
     var options = {
       'IS_DATE': (isDate.checked ? 1 : 0),
@@ -87,7 +92,8 @@
       'IS_HOURLY_VIBR': (isHourlyVibr.checked ? 1 : 0),
       'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
       'IS_ANIMATE': (isAnimate.checked ? 1 : 0),
-      'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0)
+      'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0),
+      'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0)
     };
 
     // Save for next launch
@@ -97,6 +103,7 @@
     localStorage['IS_DISCONNECT_VIBR'] = options['IS_DISCONNECT_VIBR'];
     localStorage['IS_ANIMATE'] = options['IS_ANIMATE'];
     localStorage['IS_SHAKE_ANIMATE'] = options['IS_SHAKE_ANIMATE'];
+    localStorage['IS_HAND_TAIL'] = options['IS_HAND_TAIL'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -130,6 +137,7 @@
     var isDisconnectVibr = document.getElementById('is_disconnect_vibr');
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
+    var isHandTail = document.getElementById('is_hand_tail');
     
     // Load any previously saved configuration, if available
     isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
@@ -138,6 +146,7 @@
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
+    isHandTail.checked = !(localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==0);
     
   })();
   
