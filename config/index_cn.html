@@ -146,7 +146,7 @@
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
-    isHandTail.checked = !(localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==0);
+    isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
       		      
   })();
   
