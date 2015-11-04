@@ -86,7 +86,7 @@
       'IS_SECOND': (isSecond.checked ? 1 : 0),
       'IS_HOURLY_VIBR': (isHourlyVibr.checked ? 1 : 0),
       'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
-      'IS_ANIMATE': (isAnimate.checked ? 1 : 0)
+      'IS_ANIMATE': (isAnimate.checked ? 1 : 0),
       'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0)
     };
 
@@ -145,6 +145,7 @@
     if(localStorage['IS_DISCONNECT_VIBR']) isDisconnectVibr.checked = (localStorage['IS_DISCONNECT_VIBR']==1 ? true : false);
     if(localStorage['IS_ANIMATE']) isAnimate.checked = (localStorage['IS_ANIMATE']==1 ? true : false);
     if(localStorage['IS_SHAKE_ANIMATE']) isShakeAnimate.checked = (localStorage['IS_SHAKE_ANIMATE']==1 ? true : false);
+    
   })();
   
   </script>
