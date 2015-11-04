@@ -131,20 +131,13 @@
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
     
-    isDate.checked = true;
-    isSecond.checked = true;
-    isHourlyVibr.checked = true;
-    isDisconnectVibr.checked = true;
-    isAnimate.checked = true;
-    isShakeAnimate.checked = true;
-    
     // Load any previously saved configuration, if available
-    if(localStorage['IS_DATE']) isDate.checked = (localStorage['IS_DATE']==1 ? true : false);
-    if(localStorage['IS_SECOND']) isSecond.checked = (localStorage['IS_SECOND']==1 ? true : false);
-    if(localStorage['IS_HOURLY_VIBR']) isHourlyVibr.checked = (localStorage['IS_HOURLY_VIBR']==1 ? true : false);
-    if(localStorage['IS_DISCONNECT_VIBR']) isDisconnectVibr.checked = (localStorage['IS_DISCONNECT_VIBR']==1 ? true : false);
-    if(localStorage['IS_ANIMATE']) isAnimate.checked = (localStorage['IS_ANIMATE']==1 ? true : false);
-    if(localStorage['IS_SHAKE_ANIMATE']) isShakeAnimate.checked = (localStorage['IS_SHAKE_ANIMATE']==1 ? true : false);
+    isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
+    isSecond.checked = !(localStorage['IS_SECOND'] && localStorage['IS_SECOND']==0);
+    isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
+    isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
+    isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
+    isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
     
   })();
   
