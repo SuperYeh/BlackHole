@@ -33,6 +33,10 @@
           <input id='is_second' type='checkbox' class='item-toggle'>
         </label>
         <label class='item'>
+          Planet Color
+          <input id='hand_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+        </label>
+        <label class='item'>
           Planet Contrail
           <input id='is_hand_tail' type='checkbox' class='item-toggle'>
         </label>
@@ -85,6 +89,7 @@
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
     var isHandTail = document.getElementById('is_hand_tail');
+    var handColorPicker = document.getElementById('hand_color_picker');
  
     var options = {
       'IS_DATE': (isDate.checked ? 1 : 0),
@@ -93,7 +98,8 @@
       'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
       'IS_ANIMATE': (isAnimate.checked ? 1 : 0),
       'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0),
-      'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0)
+      'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0),
+      'HAND_COLOR': handColorPicker.value
     };
 
     // Save for next launch
@@ -104,6 +110,7 @@
     localStorage['IS_ANIMATE'] = options['IS_ANIMATE'];
     localStorage['IS_SHAKE_ANIMATE'] = options['IS_SHAKE_ANIMATE'];
     localStorage['IS_HAND_TAIL'] = options['IS_HAND_TAIL'];
+    localStorage['HAND_COLOR'] = options['HAND_COLOR'];
 
     console.log('Got options: ' + JSON.stringify(options));
     return options;
@@ -138,6 +145,7 @@
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
     var isHandTail = document.getElementById('is_hand_tail');
+    var handColorPicker = document.getElementById('hand_color_picker');
     
     // Load any previously saved configuration, if available
     isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
@@ -147,6 +155,7 @@
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
     isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
+    handColorPicker.value = (localStorage['HAND_COLOR']? localStorage['HAND_COLOR']: #FFFFFF;
     
   })();
   
