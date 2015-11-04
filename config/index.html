@@ -137,7 +137,7 @@
     isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
-    isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
+    isShakeAnimate.checked = (localStorage['IS_SHAKE_ANIMATE'] ? (localStorage['IS_SHAKE_ANIMATE']==1 ? true : false) : true);
   })();
   
   </script>
