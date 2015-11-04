@@ -89,6 +89,7 @@
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
     var isHandTail = document.getElementById('is_hand_tail');
+    var handColorPicker = document.getElementById('hand_color_picker');
  
     var options = {
       'IS_DATE': (isDate.checked ? 1 : 0),
@@ -97,9 +98,9 @@
       'IS_DISCONNECT_VIBR': (isDisconnectVibr.checked ? 1 : 0),
       'IS_ANIMATE': (isAnimate.checked ? 1 : 0),
       'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0),
-      'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0)
+      'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0),
+      'HAND_COLOR': handColorPicker.value
     };
-
     // Save for next launch
     localStorage['IS_DATE'] = options['IS_DATE'];
     localStorage['IS_SECOND'] = options['IS_SECOND'];
@@ -108,11 +109,10 @@
     localStorage['IS_ANIMATE'] = options['IS_ANIMATE'];
     localStorage['IS_SHAKE_ANIMATE'] = options['IS_SHAKE_ANIMATE'];
     localStorage['IS_HAND_TAIL'] = options['IS_HAND_TAIL'];
-
+    localStorage['HAND_COLOR'] = options['HAND_COLOR'];
     console.log('Got options: ' + JSON.stringify(options));
     return options;
   }
-
   function getQueryParam(variable, defaultValue) {
     var query = location.search.substring(1);
     var vars = query.split('&');
@@ -128,12 +128,10 @@
   var submitButton = document.getElementById('submit_button');
   submitButton.addEventListener('click', function() {
     console.log('Submit');
-
     // Set the return URL depending on the runtime environment
     var return_to = getQueryParam('return_to', 'pebblejs://close#');
     document.location = return_to + encodeURIComponent(JSON.stringify(getConfigData()));
   });
-
   (function() {
     var isDate = document.getElementById('is_date');
     var isSecond = document.getElementById('is_second');
@@ -142,6 +140,7 @@
     var isAnimate = document.getElementById('is_animate');
     var isShakeAnimate = document.getElementById('is_shake_animate');
     var isHandTail = document.getElementById('is_hand_tail');
+    var handColorPicker = document.getElementById('hand_color_picker');
     
     // Load any previously saved configuration, if available
     isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
@@ -151,7 +150,8 @@
     isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
     isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
-      		      
+    if(localStorage['HAND_COLOR']) handColorPicker.value = localStorage['HAND_COLOR'];
+    
   })();
   
   </script>
