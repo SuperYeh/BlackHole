@@ -167,7 +167,7 @@
     isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
     if(localStorage['HAND_COLOR']) handColorPicker.value = localStorage['HAND_COLOR'];
     isTickMark.checked = (localStorage['IS_TICKMARK'] && localStorage['IS_TICKMARK']==1);
-    isWeather.checked = (localStorage['IS_WEATHER'] ? localStorage['IS_WEATHER']==1 : false);
+    isWeather.checked = (localStorage['IS_WEATHER'] ? (localStorage['IS_WEATHER']==1 ? true : false) : false);
     
   })();
   
