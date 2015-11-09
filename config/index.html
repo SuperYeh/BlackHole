@@ -34,7 +34,7 @@
         </label>
         <label class='item'>
           Planet Color
-          <input id='hand_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+          <input id='hand_color_picker' type='text' class='item-color item-color-white' value='#FFFFFF'>
         </label>
         <label class='item'>
           Planet Contrail
@@ -45,7 +45,7 @@
           <input id='is_tickmark' type='checkbox' class='item-toggle'>
         </label>
         <label class='item'>
-          Weather Information
+          Weather & Temperature
           <input id='is_weather' type='checkbox' class='item-toggle'>
         </label>
         <label class='item'>
@@ -162,7 +162,7 @@
     isSecond.checked = !(localStorage['IS_SECOND'] && localStorage['IS_SECOND']==0);
     isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
-    isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
+    isAnimate.checked = (localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==1);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
     isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
     if(localStorage['HAND_COLOR']) handColorPicker.value = localStorage['HAND_COLOR'];
