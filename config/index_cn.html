@@ -34,7 +34,7 @@
         </label>
         <label class='item'>
           &#x884C;&#x661F;&#x989C;&#x8272;
-          <input id='hand_color_picker' type='text' class='item-color item-color-sunny' value='#000000'>
+          <input id='hand_color_picker' type='text' class='item-color item-color-white' value='#FFFFFF'>
         </label>
         <label class='item'>
           &#x884C;&#x661F;&#x8F68;&#x8FF9;
@@ -43,6 +43,10 @@
         <label class='item'>
           &#x523B;&#x5EA6;&#x7EBF;&#x6846;
           <input id='is_tickmark' type='checkbox' class='item-toggle'>
+        </label>
+        <label class='item'>
+          &#x5929;&#x6C14;&#x6E29;&#x5EA6;
+          <input id='is_weather' type='checkbox' class='item-toggle'>
         </label>
         <label class='item'>
           &#x80CC;&#x666F;&#x53D8;&#x5316;
@@ -89,6 +93,7 @@
     var isHandTail = document.getElementById('is_hand_tail');
     var handColorPicker = document.getElementById('hand_color_picker');
     var isTickMark = document.getElementById('is_tickmark');
+    var isWeather = document.getElementById('is_weather');
  
     var options = {
       'IS_DATE': (isDate.checked ? 1 : 0),
@@ -99,7 +104,8 @@
       'IS_SHAKE_ANIMATE': (isShakeAnimate.checked ? 1 : 0),
       'IS_HAND_TAIL': (isHandTail.checked ? 1 : 0),
       'HAND_COLOR': handColorPicker.value,
-      'IS_TICKMARK': (isTickMark.checked ? 1 : 0)
+      'IS_TICKMARK': (isTickMark.checked ? 1 : 0),
+      'IS_WEATHER': (isWeather.checked ? 1 : 0)
     };
     // Save for next launch
     localStorage['IS_DATE'] = options['IS_DATE'];
@@ -111,6 +117,8 @@
     localStorage['IS_HAND_TAIL'] = options['IS_HAND_TAIL'];
     localStorage['HAND_COLOR'] = options['HAND_COLOR'];
     localStorage['IS_TICKMARK'] = options['IS_TICKMARK'];
+    localStorage['IS_WEATHER'] = options['IS_WEATHER'];
+    
     console.log('Got options: ' + JSON.stringify(options));
     return options;
   }
@@ -143,17 +151,19 @@
     var isHandTail = document.getElementById('is_hand_tail');
     var handColorPicker = document.getElementById('hand_color_picker');
     var isTickMark = document.getElementById('is_tickmark');
+    var isWeather = document.getElementById('is_weather');
     
     // Load any previously saved configuration, if available
     isDate.checked = !(localStorage['IS_DATE'] && localStorage['IS_DATE']==0);
     isSecond.checked = !(localStorage['IS_SECOND'] && localStorage['IS_SECOND']==0);
     isHourlyVibr.checked  = !(localStorage['IS_HOURLY_VIBR'] && localStorage['IS_HOURLY_VIBR']==0);
     isDisconnectVibr.checked  = !(localStorage['IS_DISCONNECT_VIBR'] && localStorage['IS_DISCONNECT_VIBR']==0);
-    isAnimate.checked = !(localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==0);
+    isAnimate.checked = (localStorage['IS_ANIMATE'] && localStorage['IS_ANIMATE']==1);
     isShakeAnimate.checked = !(localStorage['IS_SHAKE_ANIMATE'] && localStorage['IS_SHAKE_ANIMATE']==0);
     isHandTail.checked = (localStorage['IS_HAND_TAIL'] && localStorage['IS_HAND_TAIL']==1);
     if(localStorage['HAND_COLOR']) handColorPicker.value = localStorage['HAND_COLOR'];
     isTickMark.checked = (localStorage['IS_TICKMARK'] && localStorage['IS_TICKMARK']==1);
+    isWeather.checked = (localStorage['IS_WEATHER'] && localStorage['IS_WEATHER']==1);
     
   })();
   
